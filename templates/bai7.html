@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>So sánh Kernel SVM</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bài 7: So sánh Kernel trong SVM</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/bai1">Bài 1</a></li>
+                    <li><a href="/bai2">Bài 2</a></li>
+                    <li><a href="/bai3">Bài 3</a></li>
+                    <li><a href="/bai4">Bài 4</a></li>
+                    <li><a href="/bai5">Bài 5</a></li>
+                    <li><a href="/bai6">Bài 6</a></li>
+                    <li><a href="/bai7">Bài 7</a></li>
+                    <li><a href="/bai8">Bài 8</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Kết quả So sánh Các Kernel trong SVM</h2>
+        <p>Chúng ta sẽ so sánh các kernel khác nhau trong thuật toán SVM (Support Vector Machine) trên tập dữ liệu Digits. Các kernel bao gồm: Linear, Polynomial và Radial Basis Function (RBF).</p>
+        
+        <table class="results-table" style="text-align: center; justify-items: center;margin-left: 30%;">
+            <thead>
+                <tr>
+                    <th>Kernel</th>
+                    <th>Độ chính xác (%)</th>
+                    <th>Thời gian huấn luyện (giây)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for kernel, result in results.items() %}
+                    <tr>
+                        <td>{{ kernel }}</td>
+                        <td>{{ result['accuracy'] | round(2) }}</td>
+                        <td>{{ result['training_time'] | round(4) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>Đây là kết quả phân tích so sánh các kernel của thuật toán SVM. Các kernel có thể ảnh hưởng đến độ chính xác và thời gian huấn luyện của mô hình.</p>
+    </div>
+
+</body>
+</html>

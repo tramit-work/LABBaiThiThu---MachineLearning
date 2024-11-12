@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Tìm k tối ưu cho KNN trên Wine</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bài 4: Tìm k tối ưu cho KNN trên Wine</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/bai1">Bài 1</a></li>
+                    <li><a href="/bai2">Bài 2</a></li>
+                    <li><a href="/bai3">Bài 3</a></li>
+                    <li><a href="/bai4">Bài 4</a></li>
+                    <li><a href="/bai5">Bài 5</a></li>
+                    <li><a href="/bai6">Bài 6</a></li>
+                    <li><a href="/bai7">Bài 7</a></li>
+                    <li><a href="/bai8">Bài 8</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Đồ thị độ chính xác theo các giá trị của k:</h2>
+
+        <div class="plot-container">
+            <img style="display: block; margin-left: auto; margin-right: auto; height: 70%; width: auto;" 
+                 src="data:image/png;base64,{{ plot_image }}" alt="Plot Image">
+        </div>
+
+        <h3>Kết quả độ chính xác cho các giá trị của k:</h3>
+        <ul>
+            {% for accuracy in accuracies %}
+                <li>{{ accuracy }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

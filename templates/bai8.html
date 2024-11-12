@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLP trên MNIST</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bài 8: MLP trên MNIST</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/bai1">Bài 1</a></li>
+                    <li><a href="/bai2">Bài 2</a></li>
+                    <li><a href="/bai3">Bài 3</a></li>
+                    <li><a href="/bai4">Bài 4</a></li>
+                    <li><a href="/bai5">Bài 5</a></li>
+                    <li><a href="/bai6">Bài 6</a></li>
+                    <li><a href="/bai7">Bài 7</a></li>
+                    <li><a href="/bai8">Bài 8</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Kết quả từ mô hình MLP trên MNIST</h2>
+        <p>Mô hình MLP (Multilayer Perceptron) đã được huấn luyện trên tập dữ liệu MNIST và đạt được độ chính xác như sau:</p>
+        
+        <div class="result">
+            <h3>Độ chính xác:</h3>
+            <p>{{ accuracy }}%</p>
+        </div>
+
+        <p>Đây là kết quả từ mô hình MLP với cấu hình 1 lớp ẩn và 100 đơn vị. Độ chính xác của mô hình trên tập dữ liệu kiểm tra đã được tính toán.</p>
+    </div>
+
+</body>
+</html>

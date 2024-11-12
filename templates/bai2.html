@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2: Ma trận nhầm lẫn Naive Bayes trên Iris</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Bài 2: Ma trận nhầm lẫn Naive Bayes trên Iris</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/bai1">Bài 1</a></li>
+                    <li><a href="/bai2">Bài 2</a></li>
+                    <li><a href="/bai3">Bài 3</a></li>
+                    <li><a href="/bai4">Bài 4</a></li>
+                    <li><a href="/bai5">Bài 5</a></li>
+                    <li><a href="/bai6">Bài 6</a></li>
+                    <li><a href="/bai7">Bài 7</a></li>
+                    <li><a href="/bai8">Bài 8</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <h2>Ma trận nhầm lẫn Naive Bayes</h2>
+            <pre>{{ report }}</pre>
+
+            {% if plot_image %}
+                <div class="plot-container">
+                    <h3>Ma trận nhầm lẫn</h3>
+                    <img src="data:image/png;base64,{{ plot_image }}" alt="Plot Image">
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
