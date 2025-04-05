@@ -1,43 +1,96 @@
-### CÁCH SỬ DỤNG CODE ỨNG DỤNG THỊ GIÁC MÁY TÍNH NHẬN DIỆN VÀ QUẢN LÝ SÁCH TRÊN KỆ BẰNG YOLOV5
+# CÁCH SỬ DỤNG CODE ỨNG DỤNG THỊ GIÁC MÁY TÍNH NHẬN DIỆN VÀ QUẢN LÝ SÁCH TRÊN KỆ BẰNG YOLOV5
 
-#### THƯ MỤC DỮ LIỆU TRONG DỰ ÁN
-- `bookshelf-data`: Thư mục chứa dữ liệu bao gồm các tệp `train`, `test`, `val`. Các tệp này chứa các ảnh đã được gán nhãn để huấn luyện, kiểm tra và xác nhận mô hình.
-- `data.yaml`: Tệp này mô tả cấu trúc dữ liệu trong dự án và cung cấp thông tin về các lớp đối tượng và đường dẫn đến các tệp ảnh trong thư mục.
+### THƯ MỤC DỮ LIỆU TRONG DỰ ÁN
+- `bookshelf-data` - Thư mục chứa dữ liệu (train, val, test).
+- `data.yaml` - Tệp mô tả cấu trúc dữ liệu, số lớp và đường dẫn ảnh.
+- `yolov5` - Thư mục chứa mã nguồn mô hình YOLOv5.
+- `training.py` - Code huấn luyện mô hình.
+- `main.py` - Dùng để kiểm tra mô hình đã huấn luyện với ảnh hoặc video.
+- `mobile.py` - Dùng để kiểm tra mô hình đã huấn luyện với camera.
+- `app.py` - Dùng để sử dụng nhận diện trên website.
+- `outputs` - Thư mục lưu kết quả nhận diện (ảnh/video).
+- `static` - Thư mục chứa ảnh và video đầu ra của website và style.css cho HTML.
+- `templates` - Thư mục chứa giao diện HTML.
+- `yolov5s.pt` - Tệp trọng số (weights file) của mô hình YOLOv5.
 
-#### HUẤN LUYỆN MÔ HÌNH
-Để huấn luyện mô hình YOLOv5, bạn có thể sử dụng tệp `training.py`. Tệp này được thiết kế để tự động hóa quá trình huấn luyện mô hình YOLOv5 trên dữ liệu của bạn.
+### HUẤN LUYỆN MÔ HÌNH
+Để huấn luyện mô hình YOLOv5, có thể sử dụng tệp `training.py`.
 
-Tệp `training.py` có nội dung sau:
-```python
-import os
-
-# Đường dẫn đến thư mục YOLOv5
-YOLOV5_PATH = os.path.join(os.getcwd(), "yolov5")
-
-# Các tham số huấn luyện
-img_size = 640  
-batch_size = 16  
-epochs = 50 
-data_file = "bookshelf-data/data.yaml"  
-weights_file = "yolov5s.pt" 
-device = "cpu"  
-
-# Lệnh huấn luyện mô hình
-train_command = f"python {YOLOV5_PATH}/train.py --img {img_size} --batch {batch_size} --epochs {epochs} --data {data_file} --weights {weights_file} --device {device}" 
-
-# Chạy lệnh huấn luyện
-os.system(train_command)
-
-```
+Tệp `training.py` bạn có thể xem trong dự án.
 
 ### CÁCH SỬ DỤNG FILE `main.py` ĐỂ TEST MÔ HÌNH NHẬN DIỆN SÁCH
 
-#### MÔ TẢ
-Tệp `main.py` cho phép bạn sử dụng mô hình YOLOv5 đã huấn luyện để nhận diện sách trong ảnh hoặc video. Bạn có thể chọn chế độ nhận diện giữa ảnh và video và lưu kết quả vào thư mục `outputs`.
+1. **Cài đặt các phụ thuộc**
 
-#### CÁC BƯỚC SỬ DỤNG
-
-1. **Cài đặt các phụ thuộc**:
-   Bạn cần cài đặt các thư viện sau nếu chưa có:
+Bạn cần cài đặt các thư viện sau nếu chưa có:
    ```bash
    pip install torch opencv-python
+   ```
+2. **Chạy code huấn luyện mô hình**
+
+Bạn cần chạy code:
+   ```python
+   python main.py
+
+   ```
+Sau khi huấn luyện xong, tệp trọng số tốt nhất (best.pt) sẽ nằm trong:
+
+   ```bash
+   yolov5/runs/train/exp4/weights/best.pt
+   ```
+### KIỂM TRA MÔ HÌNH VỚI FILE `main.py`
+1. **Chuẩn bị mô hình**
+
+Đảm bảo bạn đã huấn luyện mô hình và có tệp best.pt tại:
+   ```bash
+   yolov5/runs/train/exp4/weights/best.pt
+   ```
+
+2. **Cấu hình thư mục đầu ra**
+
+Thư mục outputs/ sẽ được tạo tự động để lưu kết quả đầu ra từ ảnh hoặc video.
+
+
+3. **Chạy tệp main.py**
+```python
+python main.py
+```
+
+4. **Chọn chế độ image hay video để nhận diện ảnh**
+
+Khi chạy `python main.py` xong sẽ hiện lệnh cho người dùng nhập vào image hay video, thì bạn có thể chọn 1 trong 2.
+
+Sau đó dán đường dẫn link ảnh mà bạn muốn nhận diện sách.
+
+### CÓ THỂ MỞ CAMERA ĐỂ NHẬN DIỆN SÁCH VỚI FILE `mobile.py`
+1. **Chạy tệp mobile.py**
+```python
+python mobile.py
+```
+
+2. **Chọn chế độ camera để nhận diện ảnh**
+
+Khi chạy `python main.py` xong sẽ hiện lệnh cho người dùng nhập vào camera.
+
+Sau đó camera sẽ mở và bạn có thể thử với các cuốn sách có sẵn.
+
+### SỬ DỤNG FLASK ĐỂ NHẬN DIỆN ẢNH TRÊN WEBSITE VỚI `app.py`
+
+1. **Chạy tệp main.py**
+```python
+python app.py
+```
+2. **Sử dụng website để nhận diện ảnh**
+
+Trên website sẽ cho người dùng nhập ảnh tử máy, và sẽ nhận diện trực tiếp.
+
+Có thể kiểm tra ảnh trong thư mục `static`.
+
+#### Cảm ơn bạn đã sử dụng mô hình YOLOv5 của tôi!
+##### Chúng tôi rất vui khi mô hình này có thể hỗ trợ bạn trong việc nhận diện và quản lý sách trên kệ. 
+
+
+
+
+
+
