@@ -4,6 +4,7 @@
 - `bookshelf-data` - Thư mục chứa dữ liệu (train, val, test).
 - `data.yaml` - Tệp mô tả cấu trúc dữ liệu, số lớp và đường dẫn ảnh.
 - `yolov5` - Thư mục chứa mã nguồn mô hình YOLOv5.
+- `wandb` - Theo dõi và quản lý các thử nghiệm trong dự án.
 - `training.py` - Code huấn luyện mô hình.
 - `main.py` - Dùng để kiểm tra mô hình đã huấn luyện với ảnh hoặc video.
 - `mobile.py` - Dùng để kiểm tra mô hình đã huấn luyện với camera.
